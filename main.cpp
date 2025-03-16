@@ -3,7 +3,6 @@
 // library nullptr
 #include <cstddef>
 // standart library for input output
-#include <cstdlib>
 #include <iostream>
 // library untuk delay
 #include <string>
@@ -74,10 +73,27 @@ public:
            << ((temp->next->data == head->data) ? "the end of the playlist"
                                                 : temp->next->data)
            << endl;
-      this_thread::sleep_for(chrono::seconds(3));
+      std::this_thread::sleep_for(std::chrono::seconds(3));
       temp = temp->next;
     } while (temp != head);
     cout << "end" << endl;
+  }
+  
+  void Display(){
+      if (head == nullptr) {
+          cout << "Playlist is empty!" << endl;
+          return;
+      }
+      Node *temp = head;
+      cout << "playlist : ";
+      do {
+          cout << temp->data;
+          if (temp->next != head){
+              cout << ", ";
+          }
+          temp = temp->next;
+      } while (temp != head);
+    cout << endl;
   }
 };
 
@@ -88,10 +104,10 @@ int main() {
   string song;
   char c;
   while (!end) {
-    system("clear");
     cout << "Songs make you feel good!" << endl;
     cout << "1. Insert song" << endl;
     cout << "2. Play the playlist" << endl;
+    cout << "3. Display the playlist" << endl;
     cin >> choice;
     switch (choice) {
     case 1:
@@ -104,6 +120,9 @@ int main() {
       ll.Play();
       break;
     default:
+      break;
+    case 3:
+      ll.Display();
       break;
     }
     cout << "Its done? press x to exit or n to continue: ";
