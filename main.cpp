@@ -3,6 +3,7 @@
 // library nullptr
 #include <cstddef>
 // standart library for input output
+#include <cstdlib>
 #include <iostream>
 // library untuk delay
 #include <string>
@@ -123,6 +124,7 @@ int main() {
   string song;
   char c;
   while (!end) {
+    system("clear");
     cout << "Songs make you feel good!" << endl;
     cout << "1. Insert song" << endl;
     cout << "2. Play the playlist" << endl;
