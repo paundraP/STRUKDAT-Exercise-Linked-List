@@ -76,7 +76,7 @@ public:
     }
   }
 
-  void Display() {
+  void Play() {
     // cek kalau list nya kosong, langsung exit
     if (head == nullptr) {
       cout << "there is not song inside this playlist" << endl;
@@ -116,7 +116,7 @@ int main() {
       ll.insertAtTheEnd(song);
       break;
     case 2:
-      ll.Display();
+      ll.Play();
       break;
     default:
       break;
