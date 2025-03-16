@@ -42,23 +42,6 @@ public:
     head = nullptr;
   }
 
-  void insertAtBeginning(string val) {
-    Node *newNode = new Node(val);
-    // ngecek kalau belum ada node di linked list
-    if (head == nullptr) {
-      head = newNode;
-      head->next = head;
-    } else { // iterasi memundurkan node dan menaruh node baru dipaling depan
-      Node *temp = head;
-      while (temp->next != head) {
-        temp = temp->next;
-      }
-      newNode->next = head;
-      temp->next = newNode;
-      head = newNode;
-    }
-  }
-
   void insertAtTheEnd(string val) {
     Node *newNode = new Node(val);
     // cek jika belum ada node sama sekali di linked list
