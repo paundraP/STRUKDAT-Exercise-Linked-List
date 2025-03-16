@@ -59,6 +59,42 @@ public:
     }
   }
 
+    void removeSong(string val) {
+    if (head == nullptr) {
+      cout << "Playlist is empty." << endl;
+      return;
+    }
+
+    Node *temp = head;
+    Node *prev = nullptr;
+
+    do {
+      // cek kalau lagunya ketemu
+      if (temp->data == val) {
+        if (temp == head) {
+        // kalau yang dihapus itu lagu pertama
+          Node *last = head;
+          while (last->next != head) {
+            last = last->next;
+          }
+          head = head->next;
+          last->next = head;
+        } else {
+          // kalau bukan lagu pertama
+          prev->next = temp->next;
+        }
+        delete temp;
+        cout << "Song removed successfully." << endl;
+        return;
+      }
+
+      prev = temp;
+      temp = temp->next;
+    } while (temp != head);
+    // kalau lagunya ga ketemu
+    cout << "Song not found in the playlist." << endl;
+  }
+
   void Play() {
     // cek kalau list nya kosong, langsung exit
     if (head == nullptr) {
@@ -90,6 +126,7 @@ int main() {
     cout << "Songs make you feel good!" << endl;
     cout << "1. Insert song" << endl;
     cout << "2. Play the playlist" << endl;
+    cout << "3. Remove song" << endl;
     cin >> choice;
     switch (choice) {
     case 1:
@@ -100,6 +137,12 @@ int main() {
       break;
     case 2:
       ll.Play();
+      break;
+    case 3:
+      cout << "Enter the title of the song to remove: ";
+      cin.ignore();
+      getline(cin, song);
+      ll.removeSong(song);
       break;
     default:
       break;
