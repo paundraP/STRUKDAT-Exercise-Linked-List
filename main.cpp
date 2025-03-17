@@ -114,21 +114,21 @@ public:
     } while (temp != head);
     cout << "end" << endl;
   }
-
-  void Display() {
-    if (head == nullptr) {
-      cout << "Playlist is empty!" << endl;
-      return;
-    }
-    Node *temp = head;
-    cout << "playlist : ";
-    do {
-      cout << temp->data;
-      if (temp->next != head) {
-        cout << ", ";
+  
+  void Display(){
+      if (head == nullptr) {
+          cout << "Playlist is empty!" << endl;
+          return;
       }
-      temp = temp->next;
-    } while (temp != head);
+      Node *temp = head;
+      cout << "playlist : ";
+      do {
+          cout << temp->data;
+          if (temp->next != head){
+              cout << ", ";
+          }
+          temp = temp->next;
+      } while (temp != head);
     cout << endl;
   }
 };
