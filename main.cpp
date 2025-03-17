@@ -1,8 +1,16 @@
+// Circular singly linked list assignment
+// Paundra Pujo Darmawan (5027241008)
+// Ni'mah Fauziyyah A (5027241103)
+// A Ibnu Athaillah (5027241024)
+// Mohammad Abyan Ranuaji (5027241106)
+// Muhammad Afrizan Rasya (5027241048)
+
 // set waktu
 #include <chrono>
 // library nullptr
 #include <cstddef>
 // standart library for input output
+#include <cstdlib>
 #include <iostream>
 // library untuk delay
 #include <string>
@@ -114,21 +122,21 @@ public:
     } while (temp != head);
     cout << "end" << endl;
   }
-  
-  void Display(){
-      if (head == nullptr) {
-          cout << "Playlist is empty!" << endl;
-          return;
+
+  void Display() {
+    if (head == nullptr) {
+      cout << "Playlist is empty!" << endl;
+      return;
+    }
+    Node *temp = head;
+    cout << "playlist : ";
+    do {
+      cout << temp->data;
+      if (temp->next != head) {
+        cout << ", ";
       }
-      Node *temp = head;
-      cout << "playlist : ";
-      do {
-          cout << temp->data;
-          if (temp->next != head){
-              cout << ", ";
-          }
-          temp = temp->next;
-      } while (temp != head);
+      temp = temp->next;
+    } while (temp != head);
     cout << endl;
   }
 };
@@ -140,11 +148,14 @@ int main() {
   string song;
   char c;
   while (!end) {
+    system("clear");
     cout << "Songs make you feel good!" << endl;
     cout << "1. Insert song" << endl;
     cout << "2. Play the playlist" << endl;
     cout << "3. Display the playlist" << endl;
     cout << "4. Remove song" << endl;
+    cout << "5. Exit" << endl;
+    cout << "your option: ";
     cin >> choice;
     switch (choice) {
     case 1:
@@ -152,6 +163,8 @@ int main() {
       cin.ignore();
       getline(cin, song);
       ll.insertAtTheEnd(song);
+      cout << "successfully added song into playlist" << endl;
+      std::this_thread::sleep_for(std::chrono::seconds(1));
       break;
     case 2:
       ll.Play();
@@ -160,10 +173,14 @@ int main() {
       ll.Display();
       break;
     case 4:
+      ll.Display();
       cout << "Enter the title of the song to remove: ";
       cin.ignore();
       getline(cin, song);
       ll.removeSong(song);
+      break;
+    case 5:
+      return 0;
       break;
     default:
       break;
